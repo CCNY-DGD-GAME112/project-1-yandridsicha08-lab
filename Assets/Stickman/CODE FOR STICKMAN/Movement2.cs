@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement2 : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     public float speed = 0;
 
@@ -9,8 +9,7 @@ public class Movement2 : MonoBehaviour
 
     [Header("Shield Settings")]
     public GameObject shield;        
-    public KeyCode shieldKey;         
-
+    public KeyCode shieldKey;   
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +24,7 @@ public class Movement2 : MonoBehaviour
         if(shield != null)
     shield.SetActive(Input.GetKey(shieldKey));
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             speed--;
             transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y,
@@ -33,26 +32,23 @@ public class Movement2 : MonoBehaviour
 
         }
 
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             speed = 0;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             speed++;
             transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y,
                 transform.position.z);
         }
 
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             speed = 0;
         }
 
         speed = Mathf.Clamp(speed, -10, maxSpeed);
     }
-
-
 }
-
